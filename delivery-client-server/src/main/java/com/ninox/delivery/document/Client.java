@@ -8,7 +8,9 @@ public class Client {
 
 	@Id
 	private String id;
+	
 	private String nome;
+	
 	private String sobrenome;
 
 	public String getId() {
