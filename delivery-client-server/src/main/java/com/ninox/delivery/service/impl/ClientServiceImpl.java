@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.ninox.delivery.document.Client;
 import com.ninox.delivery.repository.ClientRepository;
 import com.ninox.delivery.service.ClientService;
+import com.ninox.delivery.utils.SendEmail;
 
 @Service
 public class ClientServiceImpl implements ClientService{
@@ -24,6 +25,9 @@ public class ClientServiceImpl implements ClientService{
 	
 	@Autowired
 	private ClientRepository clientRepository;
+	
+	@Autowired
+	private SendEmail sendEmail;
 	
 	@Override
 	public List<Client> listarClientes() {
@@ -58,4 +62,9 @@ public class ClientServiceImpl implements ClientService{
 		return this.clientRepository.findById(id);
 	}
 
+	@Override
+	public String sendEmail(Client client) {
+		
+		return sendEmail.simpleEmail(client);
+	}
 }

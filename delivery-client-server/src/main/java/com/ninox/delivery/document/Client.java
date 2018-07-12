@@ -12,6 +12,8 @@ public class Client {
 	private String nome;
 	
 	private String sobrenome;
+	
+	private String email;
 
 	public String getId() {
 		return id;
@@ -30,5 +32,11 @@ public class Client {
 	}
 	public void setSobrenome(String sobrenome) {
 		this.sobrenome = sobrenome;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }

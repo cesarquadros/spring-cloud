@@ -3,12 +3,14 @@ package com.ninox.delivery.rest;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -51,4 +53,21 @@ public class ClientController implements ClientContract{
 		
 	}
 
+	@Override
+	public Response<String> sendEmail(@PathVariable(name="id")String id) {
+		
+		List<String> mensagem = new ArrayList<>();
+		
+		Client client = clientServiceImpl.clientById(id).get();
+		
+		Response<String> response = new Response<>(null);
+		
+		if(!ObjectUtils.isEmpty(client)) {
+			mensagem.add(clientServiceImpl.sendEmail(client));
+		}
+		
+		response.setErros(mensagem);
+		
+		return response;
+	}
 }

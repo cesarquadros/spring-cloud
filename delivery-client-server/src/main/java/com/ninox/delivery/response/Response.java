@@ -5,14 +5,15 @@ import java.util.List;
 public class Response<T> {
 
 	private T data;
-	private List<String> erros;
+	private List<String> mensagens;
+	private Boolean valido;
 
 	public Response(T data) {
 		this.data = data;
 	}
 
 	public Response(List<String> erros) {
-		this.erros = erros;
+		this.mensagens = erros;
 	}
 
 	public T getData() {
@@ -24,10 +25,18 @@ public class Response<T> {
 	}
 
 	public List<String> getErros() {
-		return erros;
+		return mensagens;
 	}
 
 	public void setErros(List<String> erros) {
-		this.erros = erros;
+		this.mensagens = erros;
+	}
+
+	public Boolean getValido() {
+		return valido;
+	}
+
+	public void setValido(Boolean valido) {
+		this.valido = valido;
 	}
 }

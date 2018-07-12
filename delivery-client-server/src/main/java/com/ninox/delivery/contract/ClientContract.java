@@ -22,6 +22,9 @@ public interface ClientContract {
 	@PostMapping(value = "/api/client", consumes =MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
 	ResponseEntity<Response<Client>> cadastrar(@RequestBody Client client);
 	
-	@GetMapping(value = "/api/client/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "api/client/sendemail/{id}", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
+	Response<String> sendEmail(@PathVariable(name="id")String id);
+	
+	@GetMapping(value = "/api/client/downloadcsv/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	HttpEntity<byte[]> download(@PathVariable(name="id")String id) throws IOException;
 }

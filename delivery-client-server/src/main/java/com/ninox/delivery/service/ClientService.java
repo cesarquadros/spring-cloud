@@ -12,4 +12,6 @@ public interface ClientService {
 	Client salvar(Client client);
 	Optional<Client> clientById(String id);
 	String gerarCsv(Client client) throws IOException;
+	String sendEmail(Client client);
+	
 }	
