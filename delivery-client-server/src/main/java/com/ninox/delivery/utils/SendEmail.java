@@ -19,7 +19,7 @@ public class SendEmail {
 			Email email = new SimpleEmail();
 			email.setHostName(HOST_NAME);
 			email.setSmtpPort(SMTP_PORT);
-			email.setAuthentication("ninoreggae", "Ces@r190788");
+			email.setAuthentication("ninoreggae", "senha");
 			email.setSSLOnConnect(true);
 			email.setStartTLSEnabled(true);
 			email.setFrom("support@springcloud.com");
