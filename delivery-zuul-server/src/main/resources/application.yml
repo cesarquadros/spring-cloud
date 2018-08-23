@@ -1,0 +1,29 @@
+server:
+  port: 9090
+
+zuul:
+  #Service will be mapped under the /api URI
+  prefix: /api
+#  Uncomment to disable auto-registering all services read from Eureka
+#  ignoredServices: '*'
+  routes:
+    delivery-client-service:
+      path: /delivery-client-service/**
+      serviceId: DELIVERY-CLIENT-SERVICE
+
+spring:
+  application:
+    name: zuul-server
+
+eureka:
+  instance:
+    hostname: localhost
+    port: 9091
+  client:
+    registerWithEureka: true
+    fetchRegistry: false
+    serviceUrl:
+      defaultZone: http://${eureka.instance.hostname}:${eureka.instance.port}/eureka/
+  server:
+    wait-time-in-ms-when-sync-empty: 3000
+   
