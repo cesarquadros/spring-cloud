@@ -33,7 +33,7 @@ public interface ClientContract {
 	HttpEntity<byte[]> download(@PathVariable(name="id")String id) throws IOException;
 	
 	@GetMapping(value = "/client/downloadarquivo", produces = MediaType.APPLICATION_JSON_VALUE)
-	HttpEntity<byte[]> downloadArquivo(@RequestParam(value = "cnpj") String cnpj, @RequestParam(value = "nomeArquivo") String nomeArquivo) throws IOException;
+	HttpEntity<byte[]> downloadArquivo() throws IOException;
 	
 	@GetMapping(value="/client/downcsv/{id}", produces = MediaType.APPLICATION_OCTET_STREAM_VALUE)
 	public ResponseEntity downloadCsv(@Context HttpServletResponse response, @PathVariable(name="id")String id);

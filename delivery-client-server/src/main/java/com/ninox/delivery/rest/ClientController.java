@@ -28,7 +28,6 @@ import com.ninox.delivery.response.Response;
 import com.ninox.delivery.service.impl.ClientServiceImpl;
 import com.wordnik.swagger.annotations.Api;
 
-@Api(value = "TESTE", tags = "Teste")
 @RestController
 public class ClientController implements ClientContract {
 
@@ -79,14 +78,15 @@ public class ClientController implements ClientContract {
 	}
 
 	@Override
-	public HttpEntity<byte[]> downloadArquivo(@RequestParam(value = "cnpj") String cnpj,
-			@RequestParam(value = "nomeArquivo") String nomeArquivo) throws IOException {
+	public HttpEntity<byte[]> downloadArquivo() throws IOException {
 
 		byte[] arquivo = Files.readAllBytes(Paths.get("/opt/upload/in/teste.pdf"));
 
 		HttpHeaders httpHeaders = new HttpHeaders();
 
-		httpHeaders.add("Content-Disposition", "attachment;filename=\"" + nomeArquivo + "\"");
+		String nomeArquivo = "arquivoTeste";
+		
+		httpHeaders.add("Content-Disposition", "attachment;filename=\"" + nomeArquivo  + "\"");
 
 		return new HttpEntity<>(arquivo, httpHeaders);
 	}
