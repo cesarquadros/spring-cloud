@@ -1,12 +1,14 @@
 package com.ninox.delivery.utils;
 
-import java.io.IOException;
+import java.io.File;
 
 public class GeradorCsv {
 
-
-
-	public void main(String[] args) throws IOException {
+	public static void main(String[] args) {
 		
+		String caminho = System.getProperty("user.dir");
+		File path = new File(caminho);
+		
+		File[] files = path.listFiles();
 	}
 }

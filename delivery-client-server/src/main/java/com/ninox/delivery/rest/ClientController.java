@@ -19,28 +19,27 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ninox.delivery.contract.ClientContract;
 import com.ninox.delivery.document.Client;
 import com.ninox.delivery.response.Response;
 import com.ninox.delivery.service.impl.ClientServiceImpl;
-import com.wordnik.swagger.annotations.Api;
+
+import io.swagger.annotations.Api;
 
 @RestController
+@Api(value = "Cadastro de Cliente", tags = "Cliente")
 public class ClientController implements ClientContract {
 
 	@Autowired
 	private ClientServiceImpl clientServiceImpl;
-
+	
 	@Override
 	public ResponseEntity<Response<List<Client>>> listarTodos() {
 
 		return ResponseEntity.ok(new Response<List<Client>>(clientServiceImpl.listarClientes()));
 	}
-
-	@Override
 	public ResponseEntity<Response<Client>> cadastrar(@RequestBody Client client) {
 		return ResponseEntity.ok(new Response<Client>(clientServiceImpl.salvar(client)));
 	}
